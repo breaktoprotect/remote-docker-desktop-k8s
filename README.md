@@ -90,9 +90,7 @@ If you do a `kubectl get svc -A`, what is suppose to be an external IP address w
 ```
 k get svc -A
 NAMESPACE     NAME                                    TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                                 AGE
-myapp         internet-facing-svc                     LoadBalancer   10.102.108.247   localhost     80:31564/TCP,443:31973/TCP              71s
-idp           identity-provider-svc                   LoadBalancer   10.109.128.17    localhost     8080:30959/TCP,8443:30297/TCP           70s
-...
+myapp         myapp-web-service                       LoadBalancer   10.102.108.247   localhost     443:31973/TCP                           71s
 ...
 ```
 For each external IP address, you may use `socat` again to expose them on your LAN. 
