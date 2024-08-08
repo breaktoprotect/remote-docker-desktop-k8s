@@ -18,7 +18,7 @@ Terminology:
 - User machine (i.e. where you will be remotely accessing from)
 1. Run the following docker command:
 ```
-docker run -d --name socat-remote-docker-desktop -p 7443:7443 alpine/socat TCP-LISTEN:7443,fork TCP:kubernetes.docker.internal:6443
+docker run -d --name socat-remote-docker-desktop --restart unless-stopped -p 7443:7443 alpine/socat TCP-LISTEN:7443,fork TCP:kubernetes.docker.internal:6443
 ```
 Docker Desktop Kubernetes listens on your localhost 127.0.0.1:6443 so you will need to use another port. 
 
@@ -96,5 +96,5 @@ myapp         myapp-web-service                       LoadBalancer   10.102.108.
 For each external IP address, you may use `socat` again to expose them on your LAN. 
 For example if you wish to expose a 443 service, you may on the `Node machine` run the following command:
 ```
-docker run -d --name socat-web-service -p 443:443 alpine/socat TCP-LISTEN:443,fork TCP:kubernetes.docker.internal:443
+docker run -d --name socat-web-service --restart unless-stopped -p 443:443 alpine/socat TCP-LISTEN:443,fork TCP:kubernetes.docker.internal:443
 ```
